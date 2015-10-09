@@ -48,6 +48,6 @@ transition operator is desired.
         (sampleT (slice 2.0) (slice 3.0))
 
     main :: IO ()
-    main = withSystemRandom . asGenIO $ mcmc 10000 [0, 0] rosenbrock transition
+    main = withSystemRandom . asGenIO $ mcmc 10000 [0, 0] transition rosenbrock
 
 ![trace](https://dl.dropboxusercontent.com/spa/u0s6617yxinm2ca/b2w56upc.png)
