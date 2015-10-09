@@ -15,7 +15,7 @@ desirable properties amenable for MCMC.
 
 We can deterministically concatenate operators end-to-end, or sample from
 a collection of them according to some probability distribution.  See
-[Geyer, 2005](www.stat.umn.edu/geyer/f05/8931/n1998.pdf) for details.
+[Geyer, 2005](http://www.stat.umn.edu/geyer/f05/8931/n1998.pdf) for details.
 
 The result is a simple grammar for building composite, property-preserving
 transition operators from existing ones:
