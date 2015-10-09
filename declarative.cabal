@@ -11,6 +11,37 @@ build-type:          Simple
 cabal-version:       >=1.10
 description:
   DIY Markov Chains.
+  .
+  Build composite Markov transition operators from existing ones for fun and
+  profit.
+  .
+  A useful strategy is to hedge one's sampling risk by occasionally
+  interleaving a computationally-expensive transition (such as a gradient-based
+  algorithm like Hamiltonian Monte Carlo or NUTS) with cheap Metropolis
+  transitions.
+  .
+  > transition = frequency [
+  >     (9, metropolis 1.0)
+  >   , (1, hamiltonian 0.05 20)
+  >   ]
+  .
+  Alternatively: sample consecutively using the same algorithm, but over a
+  range of different proposal distributions.
+  .
+  > transition = concatAllT [
+  >     slice 0.5
+  >   , slice 1.0
+  >   , slice 2.0
+  >   ]
+  .
+  Or just mix and match and see what happens!
+  .
+  > transition =
+  >   sampleT
+  >     (sampleT (metropolis 0.5) (slice 0.1))
+  >     (sampleT (hamiltonian 0.01 20) (metropolis 2.0))
+  .
+  Check the test suite for example usage.
 
 library
   default-language:    Haskell2010
