@@ -5,6 +5,8 @@
 
 DIY Markov Chains.
 
+## What Is This
+
 This package presents a simple combinator language for Markov transition
 operators that are useful in MCMC.
 
@@ -24,10 +26,11 @@ transition operators from existing ones:
                  | concatT transition transition
                  | sampleT transition transition
 
-In addition to the above, this module provides a number of combinators for
-building composite transition operators.  It re-exports a number of
-production-quality transition operators from the *mighty-metropolis*,
-*speedy-slice*, and *hasty-hamiltonian* libraries.
+This library also re-exports a number of production-quality transition
+operators from the
+[mighty-metropolis](hackage.haskell.org/package/mighty-metropolis),
+[speedy-slice](hackage.haskell.org/package/speedy-slice), and
+[hasty-hamiltonian](hackage.haskell.org/package/hasty-hamiltonian) libraries.
 
 Markov chains can then be run over arbitrary `Target`s using whatever
 transition operator is desired.
@@ -51,3 +54,19 @@ transition operator is desired.
     main = withSystemRandom . asGenIO $ mcmc 10000 [0, 0] transition rosenbrock
 
 ![trace](https://dl.dropboxusercontent.com/spa/u0s6617yxinm2ca/b2w56upc.png)
+
+## Installation
+
+Installing is best done via
+[stack](https://github.com/commercialhaskell/stack), which will pull down
+everything you might need (including GHC).
+
+You'll want to use the [Stackage nightly
+resolver](https://www.stackage.org/nightly) until the next LTS version picks
+up these libraries.
+
+With that out of the way it's just a matter of
+
+```
+$ stack install declarative
+```
