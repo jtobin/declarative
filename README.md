@@ -62,11 +62,11 @@ Installing is best done via
 everything you might need (including GHC).
 
 You'll want to use the [Stackage nightly
-resolver](https://www.stackage.org/nightly) until the next LTS version picks
-up these libraries.
-
-With that out of the way it's just a matter of
+resolver](https://www.stackage.org/nightly) for now, until the next LTS version
+is released.  But with that out of the way it's just a matter of
 
 ```
 $ stack install declarative
 ```
+
+See the test suite for some example usage.

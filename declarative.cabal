@@ -1,5 +1,5 @@
 name:                declarative
-version:             0.1.0.1
+version:             0.1.1
 synopsis:            DIY Markov Chains.
 homepage:            http://github.com/jtobin/declarative
 license:             MIT
@@ -10,12 +10,19 @@ category:            Math
 build-type:          Simple
 cabal-version:       >=1.10
 description:
-  DIY Markov Chains.
+  This package presents a simple combinator language for Markov transition
+  operators that are useful in MCMC.
   .
-  Build composite Markov transition operators from existing ones for fun and
-  profit.
+  Any transition operators sharing the same stationary distribution and obeying
+  the Markov and reversibility properties can be combined in a couple of ways,
+  such that the resulting operator preserves the stationary distribution and
+  desirable properties amenable for MCMC.
   .
-  A useful strategy is to hedge one's sampling risk by occasionally
+  We can deterministically concatenate operators end-to-end, or sample from
+  a collection of them according to some probability distribution.  See
+  <http://www.stat.umn.edu/geyer/f05/8931/n1998.pdf Geyer, 2005> for details.
+  .
+  A useful strategy is to hedge one's 'sampling risk' by occasionally
   interleaving a computationally-expensive transition (such as a gradient-based
   algorithm like Hamiltonian Monte Carlo or NUTS) with cheap Metropolis
   transitions.
