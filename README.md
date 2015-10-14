@@ -5,7 +5,7 @@
 
 DIY Markov Chains.
 
-## What Is This
+## What is this
 
 This package presents a simple combinator language for Markov transition
 operators that are useful in MCMC.
@@ -61,12 +61,31 @@ Installing is best done via
 [stack](https://github.com/commercialhaskell/stack), which will pull down
 everything you might need (including GHC).
 
-You'll want to use the [Stackage nightly
-resolver](https://www.stackage.org/nightly) for now, until the next LTS version
-is released.  But with that out of the way it's just a matter of
+If you just want the library, you'll want to use the [Stackage nightly
+resolver](https://www.stackage.org/nightly) until it gets picked up in LTS.
+But with that out of the way it's just a matter of
 
 ```
-$ stack install declarative
+$ stack install declarative --resolver nightly-2015-10-13
 ```
 
-See the test suite for some example usage.
+If you want to grab the test suite/examples, grab the repo and build via
+
+```
+$ git clone git@github.com:jtobin/declarative.git && cd declarative && stack build
+```
+
+You can then run the test suite via `stack test`.
+
+## Documentation & Examples
+
+Check out the haddock-generated docs on
+[Hackage](https://hackage.haskell.org/package/declarative).
+
+You can also peruse the introductory [announce
+post](https://medium.com/@jaredtobin/a-framework-for-markov-chain-monte-carlo-3fc40df45592).
+
+## Etc.
+
+PRs and issues welcome.
+
