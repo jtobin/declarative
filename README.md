@@ -59,11 +59,9 @@ transition operator is desired.
 
 Installing is best done via
 [stack](https://github.com/commercialhaskell/stack), which will pull down
-everything you might need (including GHC).
-
-If you just want the library, you'll want to use the [Stackage nightly
+everything you might need (including GHC).  If you just want the library,
+you'll want to use the [Stackage nightly
 resolver](https://www.stackage.org/nightly) until it gets picked up in LTS.
-But with that out of the way it's just a matter of
 
 ```
 $ stack install declarative --resolver nightly-2015-10-13
@@ -72,7 +70,9 @@ $ stack install declarative --resolver nightly-2015-10-13
 If you want to grab the test suite/examples, grab the repo and build via
 
 ```
-$ git clone git@github.com:jtobin/declarative.git && cd declarative && stack build
+git clone git@github.com:jtobin/declarative.git
+cd declarative
+stack build
 ```
 
 You can then run the test suite via `stack test`.
