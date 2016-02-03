@@ -28,9 +28,9 @@ transition operators from existing ones:
 
 This library also re-exports a number of production-quality transition
 operators from the
-[mighty-metropolis](hackage.haskell.org/package/mighty-metropolis),
-[speedy-slice](hackage.haskell.org/package/speedy-slice), and
-[hasty-hamiltonian](hackage.haskell.org/package/hasty-hamiltonian) libraries.
+[mighty-metropolis](https://hackage.haskell.org/package/mighty-metropolis),
+[speedy-slice](https://hackage.haskell.org/package/speedy-slice), and
+[hasty-hamiltonian](https://hackage.haskell.org/package/hasty-hamiltonian) libraries.
 
 Markov chains can then be run over arbitrary `Target`s using whatever
 transition operator is desired.
@@ -57,9 +57,8 @@ transition operator is desired.
 
 ## Installation
 
-Installing is best done via
-[stack](https://github.com/commercialhaskell/stack), which will pull down
-everything you might need (including GHC).
+Installing is best done via [stack](http://haskellstack.org), which will pull
+down everything you might need (including GHC).
 
 ```
 $ stack install declarative
