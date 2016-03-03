@@ -1,5 +1,5 @@
 name:                declarative
-version:             0.1.2
+version:             0.1.1
 synopsis:            DIY Markov Chains.
 homepage:            http://github.com/jtobin/declarative
 license:             MIT
@@ -62,7 +62,7 @@ library
   build-depends:
       base              < 5
     , mcmc-types        >= 1.0.1
-    , mwc-probability   >= 1.2.0
+    , mwc-probability   >= 1.0.1
     , mighty-metropolis >= 1.0.1
     , lens              >= 4 && < 5
     , primitive
