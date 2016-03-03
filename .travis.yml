@@ -1,2 +1,21 @@
-language: haskell
 sudo: false
+language: haskell
+
+addons:
+  apt:
+    packages:
+    - libgmp-dev
+
+env:
+- ARGS="--resolver lts-5.1"
+
+before_install:
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
+script: stack $ARGS --no-terminal --install-ghc test --haddock
+
+cache:
+  directories:
+  - $HOME/.stack
