@@ -7,7 +7,7 @@ addons:
     - libgmp-dev
 
 env:
-- ARGS="--resolver lts-5.1"
+- ARGS="--resolver=lts-5.1"
 
 before_install:
 - mkdir -p ~/.local/bin
