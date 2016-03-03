@@ -1,27 +1,22 @@
 sudo: false
-language: haskell
+language: c
 
 addons:
   apt:
     packages:
     - libgmp-dev
 
-matrix:
-  include:
-  - env: BUILD=cabal GHCVER=7.10.3 CABALVER=1.22
-    compiler: ": #GHC 7.10.3"
-    addons: {apt: {packages: [cabal-install-1.22, ghc-7.10.3], sources: [hvr-ghc]}}
-  - env: BUILD=stack ARGS="--resolver lts-5.1"
-    compiler: ": #stack 7.10.3"
-    addons: {apt: {packages: [ghc-7.10.3], sources: [hvr-ghc]}}
+env:
+  STACK_YAML: stack-travis.yaml
 
 before_install:
 - mkdir -p ~/.local/bin
 - export PATH=$HOME/.local/bin:$PATH
 - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-script: stack $ARGS --no-terminal --install-ghc test --haddock
+script: stack --no-terminal --install-ghc test --haddock
 
 cache:
   directories:
   - $HOME/.stack
+
