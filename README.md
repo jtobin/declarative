@@ -2,6 +2,8 @@
 
 [![Build Status](https://secure.travis-ci.org/jtobin/declarative.png)](http://travis-ci.org/jtobin/declarative)
 [![Hackage Version](https://img.shields.io/hackage/v/declarative.svg)](http://hackage.haskell.org/package/declarative)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jtobin/declarative/blob/master/LICENSE)
+
 
 DIY Markov Chains.
 
