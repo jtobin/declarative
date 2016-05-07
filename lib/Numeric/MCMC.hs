@@ -80,6 +80,10 @@ module Numeric.MCMC (
   , MWC.createSystemRandom
   , MWC.withSystemRandom
   , MWC.asGenIO
+
+  , PrimMonad
+  , PrimState
+  , RealWorld
   ) where
 
 import Control.Lens hiding (index)
