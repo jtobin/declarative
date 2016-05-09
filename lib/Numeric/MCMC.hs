@@ -56,7 +56,7 @@
 -- >     (sampleT (slice 2.0) (slice 3.0))
 -- >
 -- > main :: IO ()
--- > main = withSystemRandom . asGenIO $ mcmc 10000 [0, 0] rosenbrock transition
+-- > main = withSystemRandom . asGenIO $ mcmc 10000 [0, 0] transition rosenbrock
 --
 -- See the attached test suite for other examples.
 
