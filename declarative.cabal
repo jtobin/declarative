@@ -1,5 +1,5 @@
 name:                declarative
-version:             0.2.2
+version:             0.2.3
 synopsis:            DIY Markov Chains.
 homepage:            http://github.com/jtobin/declarative
 license:             MIT
@@ -60,7 +60,7 @@ library
   exposed-modules:
     Numeric.MCMC
   build-depends:
-      base              < 5
+      base              >= 4 && < 6
     , mcmc-types        >= 1.0.1
     , mwc-probability   >= 1.0.1
     , mighty-metropolis >= 1.0.1
@@ -79,7 +79,7 @@ Test-suite rosenbrock
   ghc-options:
     -rtsopts
   build-depends:
-      base              < 5
+      base              >= 4 && < 6
     , mwc-probability   >= 1.0.1
     , declarative
 

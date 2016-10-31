@@ -86,7 +86,6 @@ module Numeric.MCMC (
   , RealWorld
   ) where
 
-import Control.Lens hiding (index)
 import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
 import Data.Sampling.Types
@@ -95,7 +94,7 @@ import Numeric.MCMC.Hamiltonian hiding (mcmc)
 import Numeric.MCMC.Slice hiding (mcmc)
 import Pipes hiding (next)
 import qualified Pipes.Prelude as Pipes
-import System.Random.MWC.Probability (Gen, Variate)
+import System.Random.MWC.Probability (Gen)
 import qualified System.Random.MWC.Probability as MWC
 
 -- | Deterministically concat transition operators together.
@@ -151,8 +150,7 @@ frequency xs = lift (MWC.uniformR (1, tot)) >>= (`pick` xs) where
 -- 1.4541485365128892e-2,-0.4859905564050404
 -- 0.22487398491619448,-0.29769783186855125
 mcmc
-  :: (Show (t a), FoldableWithIndex (Index (t a)) t, Ixed (t a),
-     Num (IxValue (t a)), Variate (IxValue (t a)))
+  :: Show (t a)
   => Int
   -> t a
   -> Transition IO (Chain (t a) b)
