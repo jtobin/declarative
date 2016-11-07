@@ -67,6 +67,7 @@ module Numeric.MCMC (
   , sampleAllT
   , bernoulliT
   , frequency
+  , anneal
   , mcmc
 
   -- * Re-exported
@@ -89,6 +90,7 @@ module Numeric.MCMC (
 import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
 import Data.Sampling.Types
+import Numeric.MCMC.Anneal
 import Numeric.MCMC.Metropolis hiding (mcmc)
 import Numeric.MCMC.Hamiltonian hiding (mcmc)
 import Numeric.MCMC.Slice hiding (mcmc)
