@@ -1,5 +1,5 @@
 name:                declarative
-version:             0.3.3
+version:             0.3.4
 synopsis:            DIY Markov Chains.
 homepage:            http://github.com/jtobin/declarative
 license:             MIT
@@ -66,11 +66,11 @@ library
     , mwc-probability   >= 1.0.1
     , mighty-metropolis >= 1.0.1
     , lens              >= 4 && < 5
-    , primitive
+    , primitive         >= 0.6 && < 1.0
     , pipes             >= 4 && < 5
     , hasty-hamiltonian >= 1.1.1
     , speedy-slice      >= 0.1.2
-    , transformers
+    , transformers      >= 0.5 && < 1.0
 
 Test-suite rosenbrock
   type:                exitcode-stdio-1.0
