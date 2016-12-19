@@ -2,7 +2,7 @@ flags: {}
 packages:
 - '.'
 extra-deps: []
-resolver: lts-7.11
+resolver: lts-7.14
 compiler: ghc-8.0.1
 system-ghc: false
 install-ghc: true

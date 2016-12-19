@@ -87,6 +87,7 @@ module Numeric.MCMC (
   , RealWorld
   ) where
 
+import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
 import Data.Sampling.Types
@@ -152,17 +153,17 @@ frequency xs = lift (MWC.uniformR (1, tot)) >>= (`pick` xs) where
 -- 1.4541485365128892e-2,-0.4859905564050404
 -- 0.22487398491619448,-0.29769783186855125
 mcmc
-  :: Show (t a)
+  :: (MonadIO m, PrimMonad m, Show (t a))
   => Int
   -> t a
-  -> Transition IO (Chain (t a) b)
+  -> Transition m (Chain (t a) b)
   -> Target (t a)
-  -> Gen RealWorld
-  -> IO ()
+  -> Gen (PrimState m)
+  -> m ()
 mcmc n chainPosition transition chainTarget gen = runEffect $
         chain transition Chain {..} gen
     >-> Pipes.take n
-    >-> Pipes.mapM_ print
+    >-> Pipes.mapM_ (liftIO . print)
   where
     chainScore    = lTarget chainTarget chainPosition
     chainTunables = Nothing

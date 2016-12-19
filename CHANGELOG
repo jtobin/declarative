@@ -1,6 +1,10 @@
 # Changelog
 
+- 0.4.0 (2016-12-20)
+    * Generalize base monad requirement to something matching both MonadIO and
+      PrimState.
+
 - 0.3.4 (2016-12-04)
-		* Add missing dependency bounds.
+    * Add missing dependency bounds.
 
 
