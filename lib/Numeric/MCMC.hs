@@ -69,6 +69,7 @@ module Numeric.MCMC (
   , frequency
   , anneal
   , mcmc
+  , chain
 
   -- * Re-exported
   , module Data.Sampling.Types
@@ -87,6 +88,8 @@ module Numeric.MCMC (
   , RealWorld
   ) where
 
+import Control.Monad (replicateM)
+import Control.Monad.Codensity (lowerCodensity)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
@@ -161,21 +164,43 @@ mcmc
   -> Gen (PrimState m)
   -> m ()
 mcmc n chainPosition transition chainTarget gen = runEffect $
-        chain transition Chain {..} gen
+        drive transition Chain {..} gen
     >-> Pipes.take n
     >-> Pipes.mapM_ (liftIO . print)
   where
     chainScore    = lTarget chainTarget chainPosition
     chainTunables = Nothing
 
--- A Markov chain driven by an arbitrary transition operator.
+-- | Trace 'n' iterations of a Markov chain and collect them in a list.
+--
+-- >>> results <- withSystemRandom . asGenIO $ chain 3 [0, 0] (metropolis 0.5) rosenbrock
 chain
+  :: (MonadIO m, PrimMonad m)
+  => Int
+  -> t a
+  -> Transition m (Chain (t a) b)
+  -> Target (t a)
+  -> Gen (PrimState m)
+  -> m [Chain (t a) b]
+chain n chainPosition transition chainTarget gen = runEffect $
+        drive transition Chain {..} gen
+    >-> collect n
+  where
+    chainScore    = lTarget chainTarget chainPosition
+    chainTunables = Nothing
+
+    collect :: Monad m => Int -> Consumer a m [a]
+    collect size = lowerCodensity $
+      replicateM size (lift Pipes.await)
+
+-- A Markov chain driven by an arbitrary transition operator.
+drive
   :: PrimMonad m
   => Transition m b
   -> b
   -> Gen (PrimState m)
   -> Producer b m a
-chain transition = loop where
+drive transition = loop where
   loop state prng = do
     next <- lift (MWC.sample (execStateT transition state) prng)
     yield next

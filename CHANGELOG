@@ -1,5 +1,8 @@
 # Changelog
 
+- 0.5.0 (2016-12-22)
+    * Add 'chain' function for working with chains in memory.
+
 - 0.4.0 (2016-12-20)
     * Generalize base monad requirement to something matching both MonadIO and
       PrimState.

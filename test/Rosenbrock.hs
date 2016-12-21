@@ -17,5 +17,7 @@ transition =
     (sampleT (slice 2.0) (slice 3.0))
 
 main :: IO ()
-main = withSystemRandom . asGenIO $ mcmc 100 [0, 0] transition rosenbrock
+main = withSystemRandom . asGenIO $ \gen -> do
+  _ <- chain 100 [0, 0] transition rosenbrock gen
+  mcmc 100 [0, 0] transition rosenbrock gen
 
