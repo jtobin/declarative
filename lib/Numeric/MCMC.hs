@@ -95,9 +95,9 @@ import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
 import Data.Sampling.Types
 import Numeric.MCMC.Anneal
-import Numeric.MCMC.Metropolis hiding (mcmc, chain)
-import Numeric.MCMC.Hamiltonian hiding (mcmc, chain)
-import Numeric.MCMC.Slice hiding (mcmc, chain)
+import Numeric.MCMC.Metropolis (metropolis)
+import Numeric.MCMC.Hamiltonian (hamiltonian)
+import Numeric.MCMC.Slice (slice)
 import Pipes hiding (next)
 import qualified Pipes.Prelude as Pipes
 import System.Random.MWC.Probability (Gen)
