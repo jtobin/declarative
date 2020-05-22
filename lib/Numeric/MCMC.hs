@@ -90,12 +90,11 @@ module Numeric.MCMC (
 
 import Control.Monad (replicateM)
 import Control.Monad.Codensity (lowerCodensity)
-import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Primitive (PrimMonad, PrimState, RealWorld)
 import Control.Monad.Trans.State.Strict (execStateT)
 import Data.Sampling.Types
 import Numeric.MCMC.Anneal
-import Numeric.MCMC.Metropolis (metropolis)
+import qualified Numeric.MCMC.Metropolis as M (metropolis)
 import Numeric.MCMC.Hamiltonian (hamiltonian)
 import Numeric.MCMC.Slice (slice)
 import Pipes hiding (next)
@@ -206,3 +205,9 @@ drive transition = loop where
     yield next
     loop next prng
 
+-- | A generic Metropolis transition operator.
+metropolis
+  :: (Traversable f, PrimMonad m)
+  => Double
+  -> Transition m (Chain (f Double) b)
+metropolis radial = M.metropolis radial Nothing
