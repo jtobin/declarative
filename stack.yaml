@@ -1,4 +1,4 @@
-resolver: lts-11.15
+resolver: lts-15.13
 packages: ['.']
 extra-deps:
 flags: {}
