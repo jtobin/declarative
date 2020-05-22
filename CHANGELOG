@@ -1,5 +1,9 @@
 # Changelog
 
+- 0.5.3 (2020-05-22)
+    * Minor internal changes to support a major version bump in
+      mighty-metropolis.
+
 - 0.5.0 (2016-12-22)
     * Add 'chain' function for working with chains in memory.
 
@@ -9,5 +13,4 @@
 
 - 0.3.4 (2016-12-04)
     * Add missing dependency bounds.
-
 

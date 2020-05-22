@@ -1,5 +1,5 @@
 name:                declarative
-version:             0.5.2
+version:             0.5.3
 synopsis:            DIY Markov Chains.
 homepage:            http://github.com/jtobin/declarative
 license:             MIT
@@ -8,6 +8,7 @@ author:              Jared Tobin
 maintainer:          jared@jtobin.ca
 category:            Math
 build-type:          Simple
+tested-with:         GHC == 8.2.2, GHC == 8.8.3
 cabal-version:       >=1.10
 description:
   This package presents a simple combinator language for Markov transition
@@ -65,7 +66,7 @@ library
     , kan-extensions    >= 5 && < 6
     , mcmc-types        >= 1.0.1 && < 2
     , mwc-probability   >= 2.0 && < 3
-    , mighty-metropolis >= 1.0.4 && < 2
+    , mighty-metropolis >= 2.0 && < 3
     , lens              >= 4 && < 5
     , primitive         >= 0.6 && < 1.0
     , pipes             >= 4 && < 5
